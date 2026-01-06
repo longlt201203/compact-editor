@@ -6,7 +6,7 @@ import {
   SidebarGroupLabel,
 } from "./ui/sidebar";
 import { useAppDispatch } from "../hooks/use-app-dispatch";
-import { setFileTreeChildren } from "../lib/redux/file-tree.slice";
+import { setCurrentFile, setFileTreeChildren } from "../lib/redux/file-tree.slice";
 import CompactEditorFileTree, {
   FileTreeElement,
   findElementPathById,
@@ -46,7 +46,7 @@ export default function CompactEditorSidebarContent() {
         <SidebarGroupContent>
           <CompactEditorFileTree
             elements={fileTreeState.elements}
-            onFileClick={(element) => console.log("File clicked:", element)}
+            onFileClick={(element) => dispatch(setCurrentFile(element))}
             onFolderClick={(element) => handleFolderClick(element)}
           />
         </SidebarGroupContent>

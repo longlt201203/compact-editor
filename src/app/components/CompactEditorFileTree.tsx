@@ -147,6 +147,7 @@ export default function CompactEditorFileTree({
 
   const handleFileClick = useCallback(
     (element: FileTreeElement) => {
+      if (selectedId === element.id) return;
       setSelectedId(element.id);
       onFileClick?.(element);
     },
@@ -193,7 +194,7 @@ export default function CompactEditorFileTree({
   if (elements.length === 0) {
     return (
       <div className="rounded-md border border-dashed border-sidebar-border/80 bg-sidebar px-3 py-4 text-[11px] text-muted-foreground">
-        No files yet. Use the Open Folder action to populate the tree.
+        No files yet.
       </div>
     );
   }

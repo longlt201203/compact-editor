@@ -5,6 +5,7 @@ import {
   createMemoryHistory,
   createRouter,
 } from "@tanstack/react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider as ReduxProvider } from "react-redux";
 import { reduxStore } from "./lib/redux";
 import "./index.css";
@@ -24,6 +25,8 @@ declare module "@tanstack/react-router" {
   }
 }
 
+const queryClient = new QueryClient();
+
 // Render the app
 const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
@@ -31,7 +34,9 @@ if (!rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <ReduxProvider store={reduxStore}>
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
       </ReduxProvider>
     </StrictMode>
   );

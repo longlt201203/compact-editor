@@ -3,7 +3,7 @@
 import { contextBridge, ipcRenderer } from "electron";
 import { NativeAPICallbackHandler } from "./native/types";
 
-const nativeAPINames: string[] = ["readFolderStructure", "openAndReadFolderStructure"];
+const nativeAPINames: string[] = ["readFolderStructure", "openAndReadFolderStructure", "readFileContent", "writeFileContent"];
 
 const api: Record<string, any> = {};
 for (const name of nativeAPINames) {

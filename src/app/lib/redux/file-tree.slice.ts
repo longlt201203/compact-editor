@@ -4,11 +4,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface FileTreeState {
     rootPath: string;
     elements: FileTreeElement[];
+    currentFile: FileTreeElement | null;
 }
 
 const initialState: FileTreeState = {
     elements: [],
-    rootPath: ""
+    rootPath: "",
+    currentFile: null
 };
 
 export const fileTreeSlice = createSlice({
@@ -24,10 +26,13 @@ export const fileTreeSlice = createSlice({
             if (element) {
                 element.children = action.payload.children;
             }
+        },
+        setCurrentFile: (state, action: PayloadAction<FileTreeElement | null>) => {
+            state.currentFile = action.payload;
         }
     }
 });
 
-export const { setFileTreeState, setFileTreeChildren } = fileTreeSlice.actions;
+export const { setFileTreeState, setFileTreeChildren, setCurrentFile } = fileTreeSlice.actions;
 
 export default fileTreeSlice.reducer;

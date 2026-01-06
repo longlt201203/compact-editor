@@ -25,6 +25,7 @@ export default function CompactEditorSidebarHeader() {
           isFolder: item.isDirectory,
         })),
         rootPath: result.rootPath,
+        currentFile: null
       })
     );
   }, []);
