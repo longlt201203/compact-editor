@@ -5,6 +5,8 @@ import {
   createMemoryHistory,
   createRouter,
 } from "@tanstack/react-router";
+import { Provider as ReduxProvider } from "react-redux";
+import { reduxStore } from "./lib/redux";
 import "./index.css";
 
 // Import the generated route tree
@@ -28,7 +30,9 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <ReduxProvider store={reduxStore}>
+        <RouterProvider router={router} />
+      </ReduxProvider>
     </StrictMode>
   );
 }

@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
+import fileTreeReducer from './file-tree.slice'
 
 export const reduxStore = configureStore({
-    reducer: {},
+    reducer: {
+        fileTree: fileTreeReducer
+    },
 })
 
 // Infer the `RootState`,  `AppDispatch`, and `AppStore` types from the store itself

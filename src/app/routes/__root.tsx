@@ -1,6 +1,5 @@
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { Provider as ReduxProvider } from "react-redux"
 import {
   Sidebar,
   SidebarInset,
@@ -10,11 +9,10 @@ import CompactEditorSidebarHeader from "../components/CompactEditorSidebarHeader
 import CompactEditorSidebarFooter from "../components/CompactEditorSidebarFooter";
 import CompactEditorSidebarContent from "../components/CompactEditorSidebarContent";
 import RightSidebar from "../components/RightSidebar";
-import { reduxStore } from "../lib/redux";
 
 const RootLayout = () => {
   return (
-    <ReduxProvider store={reduxStore}>
+    <>
       <SidebarProvider>
         <Sidebar variant="inset">
           <CompactEditorSidebarHeader />
@@ -31,7 +29,7 @@ const RootLayout = () => {
         </SidebarInset>
       </SidebarProvider>
       <TanStackRouterDevtools />
-    </ReduxProvider>
+    </>
   );
 };
 
